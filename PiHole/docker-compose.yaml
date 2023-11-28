@@ -1,0 +1,18 @@
+version: '3'
+pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    restart: always
+    ports:
+      - "80:80/tcp"
+      - "53:53/tcp"
+      - "53:53/udp"
+    environment:
+      TZ: 'America/Chicago'
+      WEBPASSWORD: 'password'
+      PIHOLE_DNS_: 1.1.1.1;9.9.9.9
+      DNSSEC: 'false'
+      WEBTHEME: default-dark
+    volumes:
+      - /yourdata/pihole:/etc/pihole/
+      - /yourdata/dnsmasq.d:/etc/dnsmasq.d/

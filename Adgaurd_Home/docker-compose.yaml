@@ -1,0 +1,18 @@
+version: '3'
+adguard:
+    image: adguard/adguardhome
+    restart: always
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 67:67/udp
+      - 853:853/tcp
+      - 853:853/udp
+      - 3000:3000/tcp
+      - 5443:5443/tcp
+      - 5443:5443/udp
+      - 8853:8853/udp
+    volumes:
+      - '/yourdata/work:/opt/adguardhome/work'
+      - '/yourdata/conf:/opt/adguardhome/conf'
+    container_name: adguard
